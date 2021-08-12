@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"strings"
 	"time"
 )
 
@@ -15,9 +14,9 @@ const (
 )
 
 func main() {
-	entrada, _ := in("Entrada")
-	saidaAlmoco, _ := in("Saida Almoço")
-	entradaAlmoco, _ := in("Entrada Almoço")
+	entrada := os.Args[1]
+	saidaAlmoco := os.Args[2]
+	entradaAlmoco := os.Args[3]
 
 	timeEntrada, _ := time.Parse(layoutISO, addSec(entrada))
 	timeSaidaAlmoco, _ := time.Parse(layoutISO, addSec(saidaAlmoco))
@@ -47,5 +46,5 @@ func in(str string) (string, error) {
 }
 
 func addSec(str string) string {
-	return strings.Replace(str, "\n", "", -1) + ":00"
+	return str + ":00"
 }
